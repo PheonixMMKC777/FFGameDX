@@ -1,0 +1,342 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>bin\Debug\net6.0-windows\data\bicon.ico</ApplicationIcon>
+    <BaseOutputPath>bin</BaseOutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <COMReference Include="WMPLib">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>0</VersionMinor>
+      <VersionMajor>1</VersionMajor>
+      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="{bee4bfec-6683-3e67-9167-3c0cbc68f40a}">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>4</VersionMinor>
+      <VersionMajor>2</VersionMajor>
+      <Guid>bee4bfec-6683-3e67-9167-3c0cbc68f40a</Guid>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\bg1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bghp.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bgact.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bgbat.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bginfo.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bg2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bgmenu.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bg3.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bg4.png" />
+    <None Include="bin\Debug\net6.0-windows\data\bgFinal.gif" />
+    <Content Include="bin\Debug\net6.0-windows\data\bicon.ico" />
+    <None Include="bin\Debug\net6.0-windows\data\gc3.png" />
+    <None Include="bin\Debug\net6.0-windows\data\gc2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\gc1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\gc4.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_emp.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_28.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_27.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_26.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_25.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_24.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_23.png" />
+    <None Include="bin\Debug\net6.0-windows\data\doom.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_19.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_evrae.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_atomos.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_22.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_21.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_20.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_wraith.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_18.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_17.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_16.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_15.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_14.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_13.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_ravana.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_12.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_11.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_10.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_9.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_8.png" />
+    <None Include="bin\Debug\net6.0-windows\data\mon_7.png" />
+    <None Include="bin\Debug\net6.0-windows\data\meteo3.png" />
+    <None Include="bin\Debug\net6.0-windows\data\meteo2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\meteo1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\meteo4.png" />
+    <None Include="bin\Debug\net6.0-windows\data\quake3.png" />
+    <None Include="bin\Debug\net6.0-windows\data\quake2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\quake1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\quake5.png" />
+    <None Include="bin\Debug\net6.0-windows\data\quake4.png" />
+    <None Include="bin\Debug\net6.0-windows\data\thun3.png" />
+    <None Include="bin\Debug\net6.0-windows\data\thun1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\thun2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\wave2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\wave6.png" />
+    <None Include="bin\Debug\net6.0-windows\data\wave5.png" />
+    <None Include="bin\Debug\net6.0-windows\data\wave4.png" />
+    <None Include="bin\Debug\net6.0-windows\data\wave3.png" />
+    <None Include="bin\Debug\net6.0-windows\data\wave.png" />
+    <None Include="bin\Debug\net6.0-windows\data\flamepillar2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\flamepillar1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\sum_titan.png" />
+    <None Include="bin\Debug\net6.0-windows\data\sum_levi.png" />
+    <None Include="bin\Debug\net6.0-windows\data\sum_baham.png" />
+    <None Include="bin\Debug\net6.0-windows\data\sum_phoe.png" />
+    <None Include="bin\Debug\net6.0-windows\data\sum_ramuh.png" />
+    <None Include="bin\Debug\net6.0-windows\data\sum_ifrit.png" />
+    <None Include="bin\Debug\net6.0-windows\data\osmose1.png" />
+    <None Include="bin\Debug\net6.0-windows\data\osmose2.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_w.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_s.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_r.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_m.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_l.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_h.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_f.png" />
+    <None Include="bin\Debug\net6.0-windows\data\rydia_d.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\bicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\fe2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\fe1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\fe3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_lich.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\w_scratch.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_5.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\w_blood.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\tent.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cure1.gif" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\lit3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\lit2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\lit.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\lit4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\ice.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\ice3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\ice2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\s_fire.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\s_fire2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\w_regal2.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\w_regal.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\mon_1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_w.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_r.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_m.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_l.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_h.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_f.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\cid_d.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\thief_d.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\thief_w.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\thief_m.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\thief_l.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\thief_h.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\thief_f.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_w.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_h.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_f.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_d.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\war_f.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\war_d.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_s.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\war_w.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\war_m.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\war_l.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\war_h.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_l.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0-windows\data\onion_m.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net6.0-windows7.0\data\" />
+  </ItemGroup>
+
+</Project>

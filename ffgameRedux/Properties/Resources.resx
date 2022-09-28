@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="onion_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bg0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_h" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_h.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cid_w" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cid_w.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_h" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_h.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="onion_w" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\onion_w.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_h" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_h.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thief_w" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thief_w.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_h" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_h.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="war_w" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\war_w.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vgafix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VGAFIX.FON;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="w_regal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\w_regal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="w_regal2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\w_regal2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\ice.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ice2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\ice2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ice3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\ice3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\lit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lit2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\lit2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lit3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\lit3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lit4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\lit4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="s_fire" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\s_fire.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="s_fire2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\s_fire2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_marilith" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mon_marilith.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="w_spear" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\w_spear.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cure1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\cure1.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fe1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\fe1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fe2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\fe2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fe3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\fe3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_lich" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_lich.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\tent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="w_blood" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\w_blood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="w_scratch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\w_scratch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bicon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bicon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_d" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_d.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_h" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_h.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_r" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_r.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_s" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_s.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="osmose1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\osmose1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="osmose2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\osmose2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flamepillar1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\flamepillar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="flamepillar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\flamepillar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rydia_w" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\rydia_w.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sum_baham" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\sum_baham.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sum_ifrit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\sum_ifrit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sum_levi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\sum_levi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sum_phoe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\sum_phoe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sum_ramuh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\sum_ramuh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sum_titan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\sum_titan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meteo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\meteo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meteo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\meteo2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meteo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\meteo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="meteo4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\meteo4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quake1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\quake1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quake2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\quake2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quake3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\quake3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quake4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\quake4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quake5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\quake5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thun1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thun1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thun2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thun2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="thun3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\thun3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\wave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wave2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\wave2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wave3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\wave3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wave4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\wave4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wave5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\wave5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wave6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\wave6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgact" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bgact.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgbat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bgbat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bghp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bghp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bginfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bginfo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_ravana" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_ravana.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_wraith" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_wraith.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgmenu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bgmenu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bg3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="doom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\doom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_22.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_atomos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_atomos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_evrae" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_evrae.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bg4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bg4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bgFinal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\bgFinal.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\gc1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gc2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\gc2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gc3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\gc3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="gc4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\gc4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_23" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_23.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_26" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_27" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_27.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_28" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_28.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mon_emp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Debug\net6.0-windows\data\mon_emp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>
