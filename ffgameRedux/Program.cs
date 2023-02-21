@@ -31,6 +31,7 @@ namespace ffgameRedux
             ApplicationConfiguration.Initialize();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetDefaultFont(new Font(new FontFamily("Consolas"), 9f));
+            
             Application.Run(new MainForm());
         }
     }

@@ -156,6 +156,23 @@ namespace ffgameRedux
         public static bool mouseDown;
         public static Point lastLocation;
 
+
+
+        // PartySelect
+
+        public static bool PartySelectOverride = false;
+        public static System.Windows.Forms.Form PartySelectForm = new System.Windows.Forms.Form();
+        public static int P1Override = 0;
+        public static int P2Override = 0;
+        public static int P3Override = 0;
+        public static int P4Override = 0;
+
+        public static ListBox P1CharList = new ListBox();
+        public static ListBox P2CharList = new ListBox();
+        public static ListBox P3CharList = new ListBox();
+        public static ListBox P4CharList = new ListBox();
+
+
     }
 
     partial class MainForm
@@ -164,6 +181,8 @@ namespace ffgameRedux
 
         private void InitializeComponent()
         {
+            PartySelectwindow();
+
             #region windowelements
 
             this.Player1 = new System.Windows.Forms.PictureBox();
@@ -589,11 +608,22 @@ namespace ffgameRedux
             #endregion
 
             #region LoadPlayer1Graphics
+
+           
+            
             Random rand = new Random();
             int[] RecruitNumbers = { 0, 1, 2, 3, 4, 5 };
-            int SelectedMember = rand.Next(0, RecruitNumbers.Length);
+
+
+            int SelectedMember = Globals.P1Override;
+            if (Globals.PartySelectOverride == false)
+            {
+                 SelectedMember = rand.Next(0, RecruitNumbers.Length);
+            }
             //Get ran number for loading list
             //SelectedMember = 5;
+            
+
             if (SelectedMember == 0) {
                 this.Player1ActList.Items.AddRange(new object[] {
             " Fight",
@@ -707,10 +737,16 @@ namespace ffgameRedux
             #endregion
 
             #region LoadPlayer2Graphics
-            int SelectedMember2 = rand.Next(0, RecruitNumbers.Length);
-            while (SelectedMember == SelectedMember2) {
+
+            int SelectedMember2 = Globals.P2Override;
+            if (Globals.PartySelectOverride == false)
+            {
                 SelectedMember2 = rand.Next(0, RecruitNumbers.Length);
-            };
+                while (SelectedMember == SelectedMember2)
+                {
+                    SelectedMember2 = rand.Next(0, RecruitNumbers.Length);
+                };
+            }
             //SelectedMember2 = 5;
             //Get ran number for loading list
             if (SelectedMember2 == 0)
@@ -831,11 +867,15 @@ namespace ffgameRedux
             #endregion
 
             #region LoadPlayer3Graphics
-            int SelectedMember3 = rand.Next(0, RecruitNumbers.Length);
-            while (SelectedMember == SelectedMember3 || SelectedMember2 == SelectedMember3)
+            int SelectedMember3 = Globals.P3Override;
+            if (Globals.PartySelectOverride == false)
             {
                 SelectedMember3 = rand.Next(0, RecruitNumbers.Length);
-            };
+                while (SelectedMember == SelectedMember3 || SelectedMember2 == SelectedMember3)
+                {
+                    SelectedMember3 = rand.Next(0, RecruitNumbers.Length);
+                };
+            }
             //SelectedMember3 = 5;
             //Get ran number for loading list
             if (SelectedMember3 == 0)
@@ -955,11 +995,15 @@ namespace ffgameRedux
             #endregion
 
             #region LoadPlayer4Graphics
-            int SelectedMember4 = rand.Next(0, RecruitNumbers.Length);
-            while (SelectedMember == SelectedMember4 || SelectedMember2 == SelectedMember4 || SelectedMember3 == SelectedMember4)
+            int SelectedMember4 = Globals.P4Override;
+            if (Globals.PartySelectOverride == false)
             {
                 SelectedMember4 = rand.Next(0, RecruitNumbers.Length);
-            };
+                while (SelectedMember == SelectedMember4 || SelectedMember2 == SelectedMember4 || SelectedMember3 == SelectedMember4)
+                {
+                    SelectedMember4 = rand.Next(0, RecruitNumbers.Length);
+                };
+            }
             //SelectedMember4 = 5;
 
             //Get ran number for loading list
@@ -1089,6 +1133,78 @@ namespace ffgameRedux
             Player3JoinsTheParty();
             Player4JoinsTheParty();
             // End of Main  
+        }
+
+
+        public void PartySelectwindow()
+        {
+
+            string[] Strarray = { "Luneth", "Warrior", "Thief", "Cid", "Rydia", "Edgar" };
+
+
+
+            int charc = 0;
+            while (charc < 6)
+            {
+                Globals.P1CharList.Items.Add(Strarray[charc]);
+                Globals.P2CharList.Items.Add(Strarray[charc]);
+                Globals.P3CharList.Items.Add(Strarray[charc]);
+                Globals.P4CharList.Items.Add(Strarray[charc]);
+                charc++;
+            }
+
+
+            Globals.P1CharList.Location = new Point(10, 30);
+            Globals.P2CharList.Location = new Point(80, 30);
+            Globals.P3CharList.Location = new Point(150, 30);
+            Globals.P4CharList.Location = new Point(220, 30);
+
+            Globals.P1CharList.Size = new Size(60, 90);
+            Globals.P2CharList.Size = new Size(60, 90);
+            Globals.P3CharList.Size = new Size(60, 90);
+            Globals.P4CharList.Size = new Size(60, 90);
+
+            Button RandomizeParty = new Button();
+            Button TakeThisParty = new Button();
+
+            RandomizeParty.Size = new Size(100, 45);
+            RandomizeParty.Text = "Random\nParty";
+            RandomizeParty.Location = new Point(300, 75);
+            RandomizeParty.Click += ClosePartySelect;
+
+            TakeThisParty.Size = new Size(100, 45);
+            TakeThisParty.Text = "Take This\nParty";
+            TakeThisParty.Location = new Point(300, 30);
+            TakeThisParty.Click += SetPartyVals;
+
+            Globals.PartySelectForm.Size = new Size(440, 180);
+            Globals.PartySelectForm.Text = "Party Select";
+
+            Globals.PartySelectForm.Controls.Add(Globals.P1CharList);
+            Globals.PartySelectForm.Controls.Add(Globals.P2CharList);
+            Globals.PartySelectForm.Controls.Add(Globals.P3CharList);
+            Globals.PartySelectForm.Controls.Add(Globals.P4CharList);
+            Globals.PartySelectForm.Controls.Add(TakeThisParty);
+            Globals.PartySelectForm.Controls.Add(RandomizeParty);
+            //PartySelectForm.FormBorderStyle = FormBorderStyle.None;
+            Globals.PartySelectForm.ShowDialog();
+
+        }
+
+        public void ClosePartySelect(object sender, EventArgs e)
+        {
+            Globals.PartySelectForm.Close();
+        }
+
+        public void SetPartyVals (object sender, EventArgs e)
+        {
+            Globals.P1Override = Globals.P1CharList.SelectedIndex;
+            Globals.P2Override = Globals.P2CharList.SelectedIndex;
+            Globals.P3Override = Globals.P3CharList.SelectedIndex;
+            Globals.P4Override = Globals.P4CharList.SelectedIndex;
+            Globals.PartySelectOverride = true;
+
+            Globals.PartySelectForm.Close();
         }
 
         private void CallMenu(object sender, System.EventArgs e)
