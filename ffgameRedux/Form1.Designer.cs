@@ -30,7 +30,7 @@ namespace ffgameRedux
         public static string BossName;
 
         //Dynamic Game Vals
-        public static int Floor;
+        public static int Floor;  // put = X for floor + 1, 32 is last floor
         public static int[] Spells = {1,2,0};
         public static int[] BossTech = { 0,1,2,3,4 };
         public static string Rank = "F";
@@ -89,42 +89,48 @@ namespace ffgameRedux
         public static bool Player3InAir = false;
         public static bool Player4InAir = false;
 
-        //Actual Character Stats
+        //Actual Character Stats ff1,3,4,5,7
         public static int OnionAttack = 6;
         public static int WarAttack = 10;
         public static int ThiefAttack = 7;
         public static int CidAttack = 8;
         public static int RydiaAttack = 4;
+        public static int EdgarAttack = 9;
 
         public static int OnionDefense= 3;
         public static int WarDefense= 2;
         public static int ThiefDefense= 1;
         public static int CidDefense= 2;
         public static int RydiaDefense = 1;
+        public static int EdgarDefense = 2;
 
         public static int OnionSpeed= 6;
         public static int WarSpeed= 7;
         public static int ThiefSpeed= 10;
         public static int CidSpeed=9;
         public static int RydiaSpeed = 8;
+        public static int EdgarSpeed = 3;
 
         public static int OnionHP=51;
         public static int WarHP=63;
         public static int ThiefHP=49;
         public static int CidHP=48;
         public static int RydiaHP = 55;
+        public static int EdgarHP = 42;
 
         public static int OnionMaxHP= OnionHP;
         public static int WarMaxHP= WarHP;
         public static int ThiefMaxHP= ThiefHP;
         public static int CidMaxHP= CidHP;
         public static int RydiaMaxHP = RydiaHP;
+        public static int EdgarMaxHP = EdgarHP;
 
         public static int OnionMP=12;
         public static int WarMP=5;
         public static int ThiefMP=3;
         public static int CidMP=4;
         public static int RydiaMP = 27;
+        public static int EdgarMP = 7;
 
 
 
@@ -134,6 +140,7 @@ namespace ffgameRedux
         public static int ThiefMaxMP = ThiefMP;
         public static int CidMaxMP = CidMP;
         public static int RydiaMaxMP = RydiaMP;
+        public static int EdgarMaxMP = EdgarMP;
 
         //ENemy stuff
 
@@ -149,6 +156,23 @@ namespace ffgameRedux
         public static bool mouseDown;
         public static Point lastLocation;
 
+
+
+        // PartySelect
+
+        public static bool PartySelectOverride = false;
+        public static System.Windows.Forms.Form PartySelectForm = new System.Windows.Forms.Form();
+        public static int P1Override = 0;
+        public static int P2Override = 0;
+        public static int P3Override = 0;
+        public static int P4Override = 0;
+
+        public static ListBox P1CharList = new ListBox();
+        public static ListBox P2CharList = new ListBox();
+        public static ListBox P3CharList = new ListBox();
+        public static ListBox P4CharList = new ListBox();
+
+
     }
 
     partial class MainForm
@@ -157,6 +181,8 @@ namespace ffgameRedux
 
         private void InitializeComponent()
         {
+            PartySelectwindow();
+
             #region windowelements
 
             this.Player1 = new System.Windows.Forms.PictureBox();
@@ -582,11 +608,22 @@ namespace ffgameRedux
             #endregion
 
             #region LoadPlayer1Graphics
+
+           
+            
             Random rand = new Random();
-            int[] RecruitNumbers = { 0, 1, 2, 3, 4 };
-            int SelectedMember = rand.Next(0, RecruitNumbers.Length);
+            int[] RecruitNumbers = { 0, 1, 2, 3, 4, 5 };
+
+
+            int SelectedMember = Globals.P1Override;
+            if (Globals.PartySelectOverride == false)
+            {
+                 SelectedMember = rand.Next(0, RecruitNumbers.Length);
+            }
             //Get ran number for loading list
-            //SelectedMember = 4;
+            //SelectedMember = 5;
+            
+
             if (SelectedMember == 0) {
                 this.Player1ActList.Items.AddRange(new object[] {
             " Fight",
@@ -675,17 +712,42 @@ namespace ffgameRedux
                 Globals.Player1MaxMP = Globals.RydiaMaxMP;
             }
 
+            //eddy
+            if (SelectedMember == 5)
+            {
+                this.Player1ActList.Items.AddRange(new object[] {
+            " Fight",
+            " Tools",
+            " Magic"});
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                Globals.Player1HP = Globals.EdgarHP;
+                Globals.Player1MaxHP = Globals.EdgarMaxHP;
+                Globals.Player1MP = Globals.EdgarMP;
+                Globals.Player1Attack = Globals.EdgarAttack;
+                Globals.Player1Defense = Globals.EdgarDefense;
+                Globals.Player1Speed = Globals.EdgarSpeed;
+                Globals.Player1Name = "Edgar";
+                Globals.Player1MP = Globals.EdgarMP;
+                Globals.Player1MaxMP = Globals.EdgarMaxMP;
+            }
+
             this.Player1HPGauge.Text = (Globals.Player1Name + " HP: " + Convert.ToString(Globals.Player1HP) + "/ " + Convert.ToString(Globals.Player1MaxHP));
             this.Player1MPGauge.Text = ("MP: " + Globals.Player1MP + " / " + Globals.Player1MaxMP);
 
             #endregion
 
             #region LoadPlayer2Graphics
-            int SelectedMember2 = rand.Next(0, RecruitNumbers.Length);
-            while (SelectedMember == SelectedMember2) {
+
+            int SelectedMember2 = Globals.P2Override;
+            if (Globals.PartySelectOverride == false)
+            {
                 SelectedMember2 = rand.Next(0, RecruitNumbers.Length);
-            };
-            //SelectedMember2 = 4;
+                while (SelectedMember == SelectedMember2)
+                {
+                    SelectedMember2 = rand.Next(0, RecruitNumbers.Length);
+                };
+            }
+            //SelectedMember2 = 5;
             //Get ran number for loading list
             if (SelectedMember2 == 0)
             {
@@ -781,18 +843,40 @@ namespace ffgameRedux
                 Globals.Player2MaxMP = Globals.RydiaMaxMP;
             }
 
+            if (SelectedMember2 == 5)
+            {
+                this.Player2ActList.Items.AddRange(new object[] {
+            " Fight",
+            " Tools",
+            " Magic"});
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                Globals.Player2HP = Globals.EdgarHP;
+                Globals.Player2MaxHP = Globals.EdgarMaxHP;
+                Globals.Player2MP = Globals.EdgarMP;
+                Globals.Player2Attack = Globals.EdgarAttack;
+                Globals.Player2Defense = Globals.EdgarDefense;
+                Globals.Player2Speed = Globals.EdgarSpeed;
+                Globals.Player2Name = "Edgar";
+                Globals.Player2MP = Globals.EdgarMP;
+                Globals.Player2MaxMP = Globals.EdgarMaxMP;
+            }
+
             this.Player2HPGauge.Text = (Globals.Player2Name + " HP: " + Convert.ToString(Globals.Player2HP) + "/ " + Convert.ToString(Globals.Player2MaxHP));
             this.Player2MPGauge.Text = ("MP: " + Globals.Player2MP + " / " + Globals.Player2MaxMP);
 
             #endregion
 
             #region LoadPlayer3Graphics
-            int SelectedMember3 = rand.Next(0, RecruitNumbers.Length);
-            while (SelectedMember == SelectedMember3 || SelectedMember2 == SelectedMember3)
+            int SelectedMember3 = Globals.P3Override;
+            if (Globals.PartySelectOverride == false)
             {
                 SelectedMember3 = rand.Next(0, RecruitNumbers.Length);
-            };
-            //SelectedMember3 = 4;
+                while (SelectedMember == SelectedMember3 || SelectedMember2 == SelectedMember3)
+                {
+                    SelectedMember3 = rand.Next(0, RecruitNumbers.Length);
+                };
+            }
+            //SelectedMember3 = 5;
             //Get ran number for loading list
             if (SelectedMember3 == 0)
             {
@@ -887,18 +971,40 @@ namespace ffgameRedux
                 Globals.Player3MaxMP = Globals.RydiaMaxMP;
             }
 
+            if (SelectedMember3 == 5)
+            {
+                this.Player3ActList.Items.AddRange(new object[] {
+            " Fight",
+            " Tools",
+            " Magic"});
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                Globals.Player3HP = Globals.EdgarHP;
+                Globals.Player3MaxHP = Globals.EdgarMaxHP;
+                Globals.Player3MP = Globals.EdgarMP;
+                Globals.Player3Attack = Globals.EdgarAttack;
+                Globals.Player3Defense = Globals.EdgarDefense;
+                Globals.Player3Speed = Globals.EdgarSpeed;
+                Globals.Player3Name = "Edgar";
+                Globals.Player3MP = Globals.EdgarMP;
+                Globals.Player3MaxMP = Globals.EdgarMaxMP;
+            }
+
             this.Player3HPGauge.Text = (Globals.Player3Name + " HP: " + Convert.ToString(Globals.Player3HP) + "/ " + Convert.ToString(Globals.Player3MaxHP));
             this.Player3MPGauge.Text = ("MP: " + Globals.Player3MP + " / " + Globals.Player3MaxMP);
 
             #endregion
 
             #region LoadPlayer4Graphics
-            int SelectedMember4 = rand.Next(0, RecruitNumbers.Length);
-            while (SelectedMember == SelectedMember4 || SelectedMember2 == SelectedMember4 || SelectedMember3 == SelectedMember4)
+            int SelectedMember4 = Globals.P4Override;
+            if (Globals.PartySelectOverride == false)
             {
                 SelectedMember4 = rand.Next(0, RecruitNumbers.Length);
-            };
-            // SelectedMember4 = 4;
+                while (SelectedMember == SelectedMember4 || SelectedMember2 == SelectedMember4 || SelectedMember3 == SelectedMember4)
+                {
+                    SelectedMember4 = rand.Next(0, RecruitNumbers.Length);
+                };
+            }
+            //SelectedMember4 = 5;
 
             //Get ran number for loading list
             if (SelectedMember4 == 0)
@@ -993,6 +1099,24 @@ namespace ffgameRedux
                 Globals.Player4MaxMP = Globals.RydiaMaxMP;
             }
 
+            if (SelectedMember4 == 5)
+            {
+                this.Player4ActList.Items.AddRange(new object[] {
+            " Fight",
+            " Tools",
+            " Magic"});
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                Globals.Player4HP = Globals.EdgarHP;
+                Globals.Player4MaxHP = Globals.EdgarMaxHP;
+                Globals.Player4MP = Globals.EdgarMP;
+                Globals.Player4Attack = Globals.EdgarAttack;
+                Globals.Player4Defense = Globals.EdgarDefense;
+                Globals.Player4Speed = Globals.EdgarSpeed;
+                Globals.Player4Name = "Edgar";
+                Globals.Player4MP = Globals.EdgarMP;
+                Globals.Player4MaxMP = Globals.EdgarMaxMP;
+            }
+
             this.Player4HPGauge.Text = (Globals.Player4Name + " HP: " + Convert.ToString(Globals.Player4HP) + "/ " + Convert.ToString(Globals.Player4MaxHP));
             this.Player4MPGauge.Text = ("MP: " + Globals.Player4MP + " / " + Globals.Player4MaxMP);
 
@@ -1009,6 +1133,78 @@ namespace ffgameRedux
             Player3JoinsTheParty();
             Player4JoinsTheParty();
             // End of Main  
+        }
+
+
+        public void PartySelectwindow()
+        {
+
+            string[] Strarray = { "Luneth", "Warrior", "Thief", "Cid", "Rydia", "Edgar" };
+
+
+
+            int charc = 0;
+            while (charc < 6)
+            {
+                Globals.P1CharList.Items.Add(Strarray[charc]);
+                Globals.P2CharList.Items.Add(Strarray[charc]);
+                Globals.P3CharList.Items.Add(Strarray[charc]);
+                Globals.P4CharList.Items.Add(Strarray[charc]);
+                charc++;
+            }
+
+
+            Globals.P1CharList.Location = new Point(10, 30);
+            Globals.P2CharList.Location = new Point(80, 30);
+            Globals.P3CharList.Location = new Point(150, 30);
+            Globals.P4CharList.Location = new Point(220, 30);
+
+            Globals.P1CharList.Size = new Size(60, 90);
+            Globals.P2CharList.Size = new Size(60, 90);
+            Globals.P3CharList.Size = new Size(60, 90);
+            Globals.P4CharList.Size = new Size(60, 90);
+
+            Button RandomizeParty = new Button();
+            Button TakeThisParty = new Button();
+
+            RandomizeParty.Size = new Size(100, 45);
+            RandomizeParty.Text = "Random\nParty";
+            RandomizeParty.Location = new Point(300, 75);
+            RandomizeParty.Click += ClosePartySelect;
+
+            TakeThisParty.Size = new Size(100, 45);
+            TakeThisParty.Text = "Take This\nParty";
+            TakeThisParty.Location = new Point(300, 30);
+            TakeThisParty.Click += SetPartyVals;
+
+            Globals.PartySelectForm.Size = new Size(440, 180);
+            Globals.PartySelectForm.Text = "Party Select";
+
+            Globals.PartySelectForm.Controls.Add(Globals.P1CharList);
+            Globals.PartySelectForm.Controls.Add(Globals.P2CharList);
+            Globals.PartySelectForm.Controls.Add(Globals.P3CharList);
+            Globals.PartySelectForm.Controls.Add(Globals.P4CharList);
+            Globals.PartySelectForm.Controls.Add(TakeThisParty);
+            Globals.PartySelectForm.Controls.Add(RandomizeParty);
+            //PartySelectForm.FormBorderStyle = FormBorderStyle.None;
+            Globals.PartySelectForm.ShowDialog();
+
+        }
+
+        public void ClosePartySelect(object sender, EventArgs e)
+        {
+            Globals.PartySelectForm.Close();
+        }
+
+        public void SetPartyVals (object sender, EventArgs e)
+        {
+            Globals.P1Override = Globals.P1CharList.SelectedIndex;
+            Globals.P2Override = Globals.P2CharList.SelectedIndex;
+            Globals.P3Override = Globals.P3CharList.SelectedIndex;
+            Globals.P4Override = Globals.P4CharList.SelectedIndex;
+            Globals.PartySelectOverride = true;
+
+            Globals.PartySelectForm.Close();
         }
 
         private void CallMenu(object sender, System.EventArgs e)
@@ -1086,6 +1282,11 @@ namespace ffgameRedux
                 MenuWin.Close();
 
             }
+            if (e.KeyCode == Keys.Insert)
+            {
+                Globals.Floor = 31;
+                LoadNextFloor();
+            }
 
         }
 
@@ -1120,96 +1321,128 @@ namespace ffgameRedux
 
             }
 
-            if (e.KeyCode == Keys.NumPad7)
+            if (Globals.Player1InAir == false)
             {
-                this.Player1ActList.SelectedIndex = 0;
-
-            }
-
-            if (e.KeyCode == Keys.NumPad4)
-            {
-                this.Player1ActList.SelectedIndex = 1;
-
-            }
-
-            if (e.KeyCode == Keys.NumPad1)
-            {
-                if (Player1ActList.Items.Count > 2)
+                if (Globals.Player1IsDead == false)
                 {
-                    this.Player1ActList.SelectedIndex = 2;
-                }
 
-            }
+                    if (e.KeyCode == Keys.NumPad7)
+                    {
+                        this.Player1ActList.SelectedIndex = 0;
 
-            if (e.KeyCode == Keys.NumPad8)
-            {
-                this.Player2ActList.SelectedIndex = 0;
+                    }
 
-            }
+                    if (e.KeyCode == Keys.NumPad4)
+                    {
+                        this.Player1ActList.SelectedIndex = 1;
 
-            if (e.KeyCode == Keys.NumPad5)
-            {
-                this.Player2ActList.SelectedIndex = 1;
+                    }
 
-            }
+                    if (e.KeyCode == Keys.NumPad1)
+                    {
+                        if (Player1ActList.Items.Count > 2)
+                        {
+                            this.Player1ActList.SelectedIndex = 2;
+                        }
 
-            if (e.KeyCode == Keys.NumPad2)
-            {
-
-                if (Player2ActList.Items.Count > 2)
-                {
-                    this.Player2ActList.SelectedIndex = 2;
-                }
-
-            }
-
-            if (e.KeyCode == Keys.NumPad9)
-            {
-                this.Player3ActList.SelectedIndex = 0;
-
-            }
-
-            if (e.KeyCode == Keys.NumPad6)
-            {
-                this.Player3ActList.SelectedIndex = 1;
-
-            }
-
-            if (e.KeyCode == Keys.NumPad3)
-            {
-                if (Player3ActList.Items.Count > 2)
-                {
-                    this.Player3ActList.SelectedIndex = 2;
+                    }
                 }
             }
 
-            if (e.KeyCode == Keys.Add)
+
+
+            if (Globals.Player2InAir == false)
             {
-                this.Player3ActList.SelectedIndex = 1;
-
-            }
-
-
-
-            if (e.KeyCode == Keys.Divide)
-            {
-                this.Player4ActList.SelectedIndex = 0;
-
-            }
-
-            if (e.KeyCode == Keys.Multiply)
-            {
-                this.Player4ActList.SelectedIndex = 1;
-
-            }
-
-            if (e.KeyCode == Keys.Subtract)
-            {
-                if (Player4ActList.Items.Count > 2)
+                if (Globals.Player2IsDead == false)
                 {
-                    this.Player4ActList.SelectedIndex = 2;
-                }
 
+                    if (e.KeyCode == Keys.NumPad8)
+                    {
+                        this.Player2ActList.SelectedIndex = 0;
+
+                    }
+
+                    if (e.KeyCode == Keys.NumPad5)
+                    {
+                        this.Player2ActList.SelectedIndex = 1;
+
+                    }
+
+                    if (e.KeyCode == Keys.NumPad2)
+                    {
+
+                        if (Player2ActList.Items.Count > 2)
+                        {
+                            this.Player2ActList.SelectedIndex = 2;
+                        }
+
+                    }
+                }
+            }
+
+
+
+            if (Globals.Player3InAir == false)
+            {
+
+                if (Globals.Player3IsDead == false)
+                {
+                    if (e.KeyCode == Keys.NumPad9)
+                    {
+                        this.Player3ActList.SelectedIndex = 0;
+
+                    }
+
+                    if (e.KeyCode == Keys.NumPad6)
+                    {
+                        this.Player3ActList.SelectedIndex = 1;
+
+                    }
+
+                    if (e.KeyCode == Keys.NumPad3)
+                    {
+                        if (Player3ActList.Items.Count > 2)
+                        {
+                            this.Player3ActList.SelectedIndex = 2;
+                        }
+                    }
+                }
+            }
+
+
+
+
+
+
+
+            if (Globals.Player4InAir == false)
+            {
+
+
+                if (Globals.Player4IsDead == false)
+                {
+
+                    if (e.KeyCode == Keys.Divide)
+                    {
+                        this.Player4ActList.SelectedIndex = 0;
+
+                    }
+
+                    if (e.KeyCode == Keys.Multiply)
+                    {
+                        this.Player4ActList.SelectedIndex = 1;
+
+                    }
+
+                    if (e.KeyCode == Keys.Subtract)
+                    {
+                        if (Player4ActList.Items.Count > 2)
+                        {
+                            this.Player4ActList.SelectedIndex = 2;
+                        }
+
+                    }
+                }
             }
 
             if (e.KeyCode == Keys.Add)
@@ -1300,6 +1533,21 @@ namespace ffgameRedux
                     this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_l;
                 }
             };
+            if (Globals.Player1Name == "Edgar")
+            {
+                if (this.Player1ActList.SelectedIndex == 0)
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                }
+                if (this.Player1ActList.SelectedIndex == 1)
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                }
+                if (this.Player1ActList.SelectedIndex == 2)
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_m;
+                }
+            };
 
         }
 
@@ -1382,6 +1630,21 @@ namespace ffgameRedux
                 if (this.Player2ActList.SelectedIndex == 2)
                 {
                     this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_l;
+                }
+            };
+            if (Globals.Player2Name == "Edgar")
+            {
+                if (this.Player2ActList.SelectedIndex == 0)
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                }
+                if (this.Player2ActList.SelectedIndex == 1)
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                }
+                if (this.Player2ActList.SelectedIndex == 2)
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_m;
                 }
             };
 
@@ -1468,7 +1731,21 @@ namespace ffgameRedux
                     this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_l;
                 }
             };
-
+            if (Globals.Player3Name == "Edgar")
+            {
+                if (this.Player3ActList.SelectedIndex == 0)
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                }
+                if (this.Player3ActList.SelectedIndex == 1)
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                }
+                if (this.Player3ActList.SelectedIndex == 2)
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_m;
+                }
+            };
         }
 
         private void Player4ActList_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -1550,6 +1827,22 @@ namespace ffgameRedux
                 if (this.Player4ActList.SelectedIndex == 2)
                 {
                     this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_l;
+                }
+            };
+
+            if (Globals.Player4Name == "Edgar")
+            {
+                if (this.Player4ActList.SelectedIndex == 0)
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                }
+                if (this.Player4ActList.SelectedIndex == 1)
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                }
+                if (this.Player4ActList.SelectedIndex == 2)
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_m;
                 }
             };
 
@@ -1677,7 +1970,6 @@ namespace ffgameRedux
                     P1BlackMagicFormula();
                 }
             }
-
             if (this.Player1ActList.SelectedItem == " White")
             {
                 if (Globals.EnemyHP >= 1)
@@ -1727,13 +2019,26 @@ namespace ffgameRedux
                     P1Summon();
                 }
             }
+            if (this.Player1ActList.SelectedItem == " Tools")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P1Tools();
+                }
+            }
+            if (this.Player1ActList.SelectedItem == " Magic")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P1BlackMagicFormula();
+                }
+            }
 
             if (Globals.Player1InAir == true && Globals.EnemyHP >= 1)
             {
 
                 P1LandFormula();
             }
-
             if (this.Player1ActList.SelectedItem == " Jump")
             {
                 if (Globals.EnemyHP >= 1)
@@ -1807,7 +2112,20 @@ namespace ffgameRedux
                     P2Osmose();
                 }
             }
-            
+            if (this.Player2ActList.SelectedItem == " Tools")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P2Tools();
+                }
+            }
+            if (this.Player2ActList.SelectedItem == " Magic")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P2BlackMagicFormula();
+                }
+            }
 
             if (Globals.Player2InAir == true && Globals.EnemyHP >= 1)
             {
@@ -1888,6 +2206,21 @@ namespace ffgameRedux
                     P3Osmose();
                 }
             }
+            if (this.Player3ActList.SelectedItem == " Tools")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P3Tools();
+                }
+            }
+            if (this.Player3ActList.SelectedItem == " Magic")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P3BlackMagicFormula();
+                }
+            }
+
             if (Globals.Player3InAir == true && Globals.EnemyHP >= 1)
             {
 
@@ -1911,7 +2244,6 @@ namespace ffgameRedux
                     P4FightFormula();
                 }
             }
-
             if (this.Player4ActList.SelectedItem == " Black")
             {
                 if (Globals.EnemyHP >= 1)
@@ -1919,7 +2251,6 @@ namespace ffgameRedux
                     P4BlackMagicFormula();
                 }
             }
-
             if (this.Player4ActList.SelectedItem == " White")
             {
                 if (Globals.EnemyHP >= 1)
@@ -1969,13 +2300,26 @@ namespace ffgameRedux
                     P4Osmose();
                 }
             }
+            if (this.Player4ActList.SelectedItem == " Tools")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P4Tools();
+                }
+            }
+            if (this.Player4ActList.SelectedItem == " Magic")
+            {
+                if (Globals.EnemyHP >= 1)
+                {
+                    P4BlackMagicFormula();
+                }
+            }
 
             if (Globals.Player4InAir == true && Globals.EnemyHP >= 1)
             {
 
                 P4LandFormula();
             }
-
             if (this.Player4ActList.SelectedItem == " Jump")
             {
                 if (Globals.EnemyHP >= 1)
@@ -2011,7 +2355,6 @@ namespace ffgameRedux
             this.Player4ActList.SelectedIndex = -1;
             
         }
-
 
         private void BossFinder()
         {
@@ -2421,7 +2764,13 @@ namespace ffgameRedux
                     this.Refresh();
 
                 }
+                if (Globals.Player1Name == "Edgar")
+                {
+                    this.Player1.Image = this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                    this.Player1.Location = new Point(this.Player1.Location.X + 40, this.Player1.Location.Y);
+                    this.Refresh();
 
+                }
 
             }
             if (Globals.Player2InAir == false)
@@ -2468,7 +2817,13 @@ namespace ffgameRedux
                     this.Refresh();
 
                 }
+                if (Globals.Player2Name == "Edgar")
+                {
+                    this.Player2.Image = this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                    this.Player2.Location = new Point(this.Player2.Location.X + 40, this.Player2.Location.Y);
+                    this.Refresh();
 
+                }
 
             }
             if (Globals.Player3InAir == false)
@@ -2515,7 +2870,13 @@ namespace ffgameRedux
                     this.Refresh();
 
                 }
+                if (Globals.Player3Name == "Edgar")
+                {
+                    this.Player3.Image = this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                    this.Player3.Location = new Point(this.Player3.Location.X + 40, this.Player3.Location.Y);
+                    this.Refresh();
 
+                }
 
             }
             if (Globals.Player4InAir == false)
@@ -2563,7 +2924,13 @@ namespace ffgameRedux
                     this.Refresh();
 
                 }
+                if (Globals.Player4Name == "Edgar")
+                {
+                    this.Player4.Image = this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                    this.Player4.Location = new Point(this.Player4.Location.X + 40, this.Player4.Location.Y);
+                    this.Refresh();
 
+                }
             }
 
             #endregion //dmg anim
@@ -2711,7 +3078,6 @@ namespace ffgameRedux
             PartyDeathCheck();
             Thread.Sleep(100);
         }
-
 
         private void P1FightFormula()
         {
@@ -3009,6 +3375,69 @@ namespace ffgameRedux
                 this.Refresh();
                 Thread.Sleep(AnimCooldown);
                 this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                // DMG Step
+                int BaseDMG = Globals.Player1Attack + 1 + Globals.Floor;
+                if (Globals.Player1Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+                Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+                this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+                this.DMGLabel.Text = Convert.ToString(BaseDMG);
+                this.DMGLabel.Visible = true;
+                this.Refresh();
+                Thread.Sleep(600);
+                this.DMGLabel.Visible = false;
+                this.Text = Convert.ToString(Globals.EnemyHP);
+                if (Globals.EnemyHP <= 0)
+                {
+                    this.Enemy1.Visible = false;
+                    Globals.EnemyHP = 0;
+                    this.Refresh();
+                    // Load next floor
+
+                }
+                if (Globals.Player1Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+            }
+            if (Globals.Player1Name == "Edgar")
+            {
+
+                this.Player1.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Refresh();
+                int AnimCooldown = 75;
+
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_s;
                 this.Gameweapon.Visible = false;
                 this.Refresh();
                 Thread.Sleep(AnimCooldown);
@@ -3363,6 +3792,69 @@ namespace ffgameRedux
                 }
                 if (Globals.Player2Speed > CritVal) { BaseDMG = BaseDMG / 2; }
             }
+            if (Globals.Player2Name == "Edgar")
+            {
+
+                this.Player2.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Refresh();
+                int AnimCooldown = 75;
+
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                // DMG Step
+                int BaseDMG = Globals.Player2Attack + 1 + Globals.Floor;
+                if (Globals.Player2Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+                Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+                this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+                this.DMGLabel.Text = Convert.ToString(BaseDMG);
+                this.DMGLabel.Visible = true;
+                this.Refresh();
+                Thread.Sleep(600);
+                this.DMGLabel.Visible = false;
+                this.Text = Convert.ToString(Globals.EnemyHP);
+                if (Globals.EnemyHP <= 0)
+                {
+                    this.Enemy1.Visible = false;
+                    Globals.EnemyHP = 0;
+                    this.Refresh();
+                    // Load next floor
+
+                }
+                if (Globals.Player2Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+            }
             ResetPlayer2Position();
             this.Refresh();
             Thread.Sleep(540);
@@ -3665,6 +4157,69 @@ namespace ffgameRedux
                 this.Refresh();
                 Thread.Sleep(AnimCooldown);
                 this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                // DMG Step
+                int BaseDMG = Globals.Player3Attack + 1 + Globals.Floor;
+                if (Globals.Player3Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+                Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+                this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+                this.DMGLabel.Text = Convert.ToString(BaseDMG);
+                this.DMGLabel.Visible = true;
+                this.Refresh();
+                Thread.Sleep(600);
+                this.DMGLabel.Visible = false;
+                this.Text = Convert.ToString(Globals.EnemyHP);
+                if (Globals.EnemyHP <= 0)
+                {
+                    this.Enemy1.Visible = false;
+                    Globals.EnemyHP = 0;
+                    this.Refresh();
+                    // Load next floor
+
+                }
+                if (Globals.Player3Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+            }
+            if (Globals.Player3Name == "Edgar")
+            {
+
+                this.Player3.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Refresh();
+                int AnimCooldown = 75;
+
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_s;
                 this.Gameweapon.Visible = false;
                 this.Refresh();
                 Thread.Sleep(AnimCooldown);
@@ -4020,6 +4575,69 @@ namespace ffgameRedux
                 }
                 if (Globals.Player4Speed > CritVal) { BaseDMG = BaseDMG / 2; }
             }
+            if (Globals.Player4Name == "Edgar")
+            {
+
+                this.Player4.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Refresh();
+                int AnimCooldown = 75;
+
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_f;
+                this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.w_regal;
+                this.Gameweapon.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Size.Width, this.Enemy1.Location.Y + this.Enemy1.Size.Height / 2);
+                this.Gameweapon.Visible = true;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                this.Gameweapon.Visible = false;
+                this.Refresh();
+                Thread.Sleep(AnimCooldown);
+
+                // DMG Step
+                int BaseDMG = Globals.Player4Attack + 1 + Globals.Floor;
+                if (Globals.Player4Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+                Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+                this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+                this.DMGLabel.Text = Convert.ToString(BaseDMG);
+                this.DMGLabel.Visible = true;
+                this.Refresh();
+                Thread.Sleep(600);
+                this.DMGLabel.Visible = false;
+                this.Text = Convert.ToString(Globals.EnemyHP);
+                if (Globals.EnemyHP <= 0)
+                {
+                    this.Enemy1.Visible = false;
+                    Globals.EnemyHP = 0;
+                    this.Refresh();
+                    // Load next floor
+
+                }
+                if (Globals.Player4Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+            }
             ResetPlayer4Position();
             this.Refresh();
             Thread.Sleep(540);
@@ -4092,7 +4710,13 @@ namespace ffgameRedux
                         this.Refresh();
                         Thread.Sleep(700);
                     }
-
+                    if (Globals.Player1Name == "Edgar")
+                    {
+                        this.Player1.Image = this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                        this.Player1.Location = new Point(this.Player1.Location.X + 40, this.Player1.Location.Y);
+                        this.Refresh();
+                        Thread.Sleep(700);
+                    }
 
                     Globals.Player1HP = Globals.Player1HP - Globals.EnemyAttack + Globals.Floor - Globals.Player1Defense;
                     if (Globals.Player1HP <= 0) { Globals.Player1HP = 0; }
@@ -4151,7 +4775,13 @@ namespace ffgameRedux
                         this.Refresh();
                         Thread.Sleep(700);
                     }
-
+                    if (Globals.Player2Name == "Edgar")
+                    {
+                        this.Player2.Image = this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                        this.Player2.Location = new Point(this.Player2.Location.X + 40, this.Player2.Location.Y);
+                        this.Refresh();
+                        Thread.Sleep(700);
+                    }
                     Globals.Player2HP = Globals.Player2HP - Globals.EnemyAttack + Globals.Floor - Globals.Player2Defense;
                     if (Globals.Player2HP <= 0) { Globals.Player2HP = 0; }
                     this.Player2HPGauge.Text = (Globals.Player2Name + " HP: " + Convert.ToString(Globals.Player2HP) + "/ " + Convert.ToString(Globals.Player2MaxHP));
@@ -4209,7 +4839,13 @@ namespace ffgameRedux
                         this.Refresh();
                         Thread.Sleep(700);
                     }
-
+                    if (Globals.Player3Name == "Edgar")
+                    {
+                        this.Player3.Image = this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_h;
+                        this.Player3.Location = new Point(this.Player3.Location.X + 40, this.Player3.Location.Y);
+                        this.Refresh();
+                        Thread.Sleep(700);
+                    }
                     Globals.Player3HP = Globals.Player3HP - Globals.EnemyAttack + Globals.Floor - Globals.Player3Defense;
                     if (Globals.Player3HP <= 0) { Globals.Player3HP = 0; }
                     this.Player3HPGauge.Text = (Globals.Player3Name + " HP: " + Convert.ToString(Globals.Player3HP) + "/ " + Convert.ToString(Globals.Player3MaxHP));
@@ -4264,6 +4900,14 @@ namespace ffgameRedux
                     if (Globals.Player4Name == "Rydia")
                     {
                         this.Player4.Image = this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_h;
+                        this.Player4.Location = new Point(this.Player4.Location.X + 40, this.Player4.Location.Y);
+                        this.Refresh();
+                        Thread.Sleep(700);
+                    }
+
+                    if (Globals.Player4Name == "Edgar")
+                    {
+                        this.Player4.Image = this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_h;
                         this.Player4.Location = new Point(this.Player4.Location.X + 40, this.Player4.Location.Y);
                         this.Refresh();
                         Thread.Sleep(700);
@@ -4441,6 +5085,10 @@ namespace ffgameRedux
                 {
                     this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_w;
                 }
+                if (Globals.Player1Name == "Edgar")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
             }
             if (Globals.Player2IsDead == false)
             {
@@ -4467,6 +5115,10 @@ namespace ffgameRedux
                 if (Globals.Player2Name == "Rydia")
                 {
                     this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_w;
+                }
+                if (Globals.Player2Name == "Edgar")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_w;
                 }
             }
             if (Globals.Player3IsDead == false)
@@ -4495,6 +5147,10 @@ namespace ffgameRedux
                 {
                     this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_w;
                 }
+                if (Globals.Player3Name == "Edgar")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
             }
             if (Globals.Player4IsDead == false)
             {
@@ -4522,116 +5178,32 @@ namespace ffgameRedux
                 {
                     this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_w;
                 }
+                if (Globals.Player4Name == "Edgar")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
             }
             this.Refresh();
             Thread.Sleep(DanceCooldown);
             if (Globals.Player1IsDead == false)
             {
-
-                if (Globals.Player1Name == "Luneth")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player1Name == "Warrior")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player1Name == "Thief")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player1Name == "Cid")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player1Name == "Rydia")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
+                ResetPlayer1Position();
+                
             }
             if (Globals.Player2IsDead == false)
             {
+                ResetPlayer2Position();
 
-                if (Globals.Player2Name == "Luneth")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player2Name == "Warrior")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player2Name == "Thief")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player2Name == "Cid")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player2Name == "Rydia")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             if (Globals.Player3IsDead == false)
             {
+                ResetPlayer3Position();
 
-                if (Globals.Player3Name == "Luneth")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player3Name == "Warrior")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player3Name == "Thief")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player3Name == "Cid")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player3Name == "Rydia")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             if (Globals.Player4IsDead == false)
             {
+                ResetPlayer4Position();
 
-                if (Globals.Player4Name == "Luneth")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player4Name == "Warrior")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player4Name == "Thief")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player4Name == "Cid")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player4Name == "Rydia")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             this.Refresh();
             Thread.Sleep(DanceCooldown);
@@ -4661,6 +5233,10 @@ namespace ffgameRedux
                 {
                     this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_w;
                 }
+                if (Globals.Player1Name == "Edgar")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
             }
             if (Globals.Player2IsDead == false)
             {
@@ -4687,6 +5263,10 @@ namespace ffgameRedux
                 if (Globals.Player2Name == "Rydia")
                 {
                     this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_w;
+                }
+                if (Globals.Player2Name == "Edgar")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_w;
                 }
             }
             if (Globals.Player3IsDead == false)
@@ -4715,6 +5295,10 @@ namespace ffgameRedux
                 {
                     this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_w;
                 }
+                if (Globals.Player3Name == "Edgar")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
             }
             if (Globals.Player4IsDead == false)
             {
@@ -4742,116 +5326,32 @@ namespace ffgameRedux
                 {
                     this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_w;
                 }
+                if (Globals.Player4Name == "Edgar")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
             }
             this.Refresh();
             Thread.Sleep(DanceCooldown);
             if (Globals.Player1IsDead == false)
             {
+                ResetPlayer1Position();
 
-                if (Globals.Player1Name == "Luneth")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player1Name == "Warrior")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player1Name == "Thief")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player1Name == "Cid")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player1Name == "Rydia")
-                {
-                    this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             if (Globals.Player2IsDead == false)
             {
+                ResetPlayer2Position();
 
-                if (Globals.Player2Name == "Luneth")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player2Name == "Warrior")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player2Name == "Thief")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player2Name == "Cid")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player2Name == "Rydia")
-                {
-                    this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             if (Globals.Player3IsDead == false)
             {
+                ResetPlayer3Position();
 
-                if (Globals.Player3Name == "Luneth")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player3Name == "Warrior")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player3Name == "Thief")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player3Name == "Cid")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player3Name == "Rydia")
-                {
-                    this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             if (Globals.Player4IsDead == false)
             {
+                ResetPlayer4Position();
 
-                if (Globals.Player4Name == "Luneth")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.onion_s;
-                }
-
-                if (Globals.Player4Name == "Warrior")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.war_s;
-                }
-
-                if (Globals.Player4Name == "Thief")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.thief_s;
-                }
-
-                if (Globals.Player4Name == "Cid")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.cid_s;
-                }
-                if (Globals.Player4Name == "Rydia")
-                {
-                    this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_s;
-                }
             }
             this.Refresh();
             Thread.Sleep(DanceCooldown);
@@ -4869,6 +5369,29 @@ namespace ffgameRedux
               
             }
 
+            if (Globals.Floor > 13)
+            {
+                int[] F14HP = { 21, 29, 38, 46, 43, 51 };
+                int[] F14SP = { 7, 8, 9, 10, 11, 12 };
+
+                Globals.HPUpPool = F14HP;
+                Globals.StatUpPool = F14SP;
+
+
+
+            }
+
+            if (Globals.Floor > 21)
+            {
+                int[] F21HP = { 43, 50, 57, 67, 76, 84 };
+                int[] F21SP = { 11, 12, 13, 14, 15, 18 };
+
+                Globals.HPUpPool = F21HP;
+                Globals.StatUpPool = F21SP;
+
+
+
+            }
 
             #region stat ups
             Random ran = new Random();
@@ -5437,6 +5960,10 @@ namespace ffgameRedux
             {
                 this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_d;
             }
+            if (Globals.Player1Name == "Edgar")
+            {
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_d;
+            }
 
             Globals.Player1IsDead = true;
             this.Player1ActList.Enabled = false;
@@ -5469,6 +5996,10 @@ namespace ffgameRedux
             if (Globals.Player2Name == "Rydia")
             {
                 this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_d;
+            }
+            if (Globals.Player2Name == "Edgar")
+            {
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_d;
             }
 
             Globals.Player2IsDead = true;
@@ -5504,6 +6035,10 @@ namespace ffgameRedux
             {
                 this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_d;
             }
+            if (Globals.Player3Name == "Edgar")
+            {
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_d;
+            }
 
             Globals.Player3IsDead = true;
             this.Player3ActList.Enabled = false;
@@ -5538,6 +6073,10 @@ namespace ffgameRedux
             {
                 this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_d;
             }
+            if (Globals.Player4Name == "Edgar")
+            {
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_d;
+            }
 
             Globals.Player4IsDead = true;
             this.Player4ActList.Enabled = false;
@@ -5570,6 +6109,10 @@ namespace ffgameRedux
             {
                 this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_s;
             }
+            if (Globals.Player1Name == "Edgar")
+            {
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+            }
             this.Player1.Location = new System.Drawing.Point(600, 140);
         }
 
@@ -5597,6 +6140,10 @@ namespace ffgameRedux
             if (Globals.Player2Name == "Rydia")
             {
                 this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+            }
+            if (Globals.Player2Name == "Edgar")
+            {
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_s;
             }
             this.Player2.Location = new System.Drawing.Point(630, 200);
             this.Refresh();
@@ -5627,6 +6174,10 @@ namespace ffgameRedux
             {
                 this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_s;
             }
+            if (Globals.Player3Name == "Edgar")
+            {
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+            }
             this.Player3.Location = new System.Drawing.Point(660, 260);
             this.Refresh();
         }
@@ -5656,6 +6207,10 @@ namespace ffgameRedux
             {
                 this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_s;
             }
+            if (Globals.Player4Name == "Edgar")
+            {
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+            }
             this.Player4.Location = new System.Drawing.Point(690, 320);
             this.Refresh();
         }
@@ -5677,8 +6232,16 @@ namespace ffgameRedux
 
         }
 
+
         private void P1BlackMagicFormula() {
-            this.Player1.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            if (Globals.Player1Name == "Luneth")
+            {
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            }
+            if (Globals.Player1Name == "Edgar")
+            {
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+            }
             this.Player1.Location = new Point(this.Player1.Location.X - 32, this.Player1.Location.Y);
             if (Globals.Player1MP <= 2)
             {
@@ -5855,7 +6418,14 @@ namespace ffgameRedux
 
         private void P2BlackMagicFormula()
         {
-            this.Player2.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            if (Globals.Player2Name == "Luneth")
+            {
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            }
+            if (Globals.Player2Name == "Edgar")
+            {
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+            }
             this.Player2.Location = new Point(this.Player2.Location.X - 32, this.Player2.Location.Y);
             if (Globals.Player2MP <= 2)
             {
@@ -6031,7 +6601,14 @@ namespace ffgameRedux
 
         private void P3BlackMagicFormula()
         {
-            this.Player3.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            if (Globals.Player3Name == "Luneth")
+            {
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            }
+            if (Globals.Player3Name == "Edgar")
+            {
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+            }
             this.Player3.Location = new Point(this.Player3.Location.X - 32, this.Player3.Location.Y);
             if (Globals.Player3MP <= 2)
             {
@@ -6207,7 +6784,14 @@ namespace ffgameRedux
 
         private void P4BlackMagicFormula()
         {
-            this.Player4.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            if (Globals.Player4Name == "Luneth")
+            {
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.onion_w;
+            }
+            if (Globals.Player4Name == "Edgar")
+            {
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+            }
             this.Player4.Location = new Point(this.Player4.Location.X - 32, this.Player4.Location.Y);
             if (Globals.Player4MP <= 2)
             {
@@ -7112,7 +7696,7 @@ namespace ffgameRedux
             // do anim
             //dmg step
             int BaseDMG;
-            BaseDMG = Globals.Player1MaxHP - Globals.Player1HP - Globals.Player1Attack;
+            BaseDMG = Globals.Player1MaxHP - Globals.Player1HP;
             if (BaseDMG <= 0) { BaseDMG = 1; }
 
             Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
@@ -7260,7 +7844,7 @@ namespace ffgameRedux
             // do anim
             //dmg step
             int BaseDMG;
-            BaseDMG = Globals.Player2MaxHP - Globals.Player2HP - Globals.Player2Attack;
+            BaseDMG = Globals.Player2MaxHP - Globals.Player2HP;
             if (BaseDMG <= 0) { BaseDMG = 1; }
 
             Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
@@ -7409,7 +7993,7 @@ namespace ffgameRedux
             // do anim
             //dmg step
             int BaseDMG;
-            BaseDMG = Globals.Player3MaxHP - Globals.Player3HP - Globals.Player3Attack;
+            BaseDMG = Globals.Player3MaxHP - Globals.Player3HP;
             if (BaseDMG <= 0) { BaseDMG = 1; }
 
             Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
@@ -7558,7 +8142,7 @@ namespace ffgameRedux
             // do anim
             //dmg step
             int BaseDMG;
-            BaseDMG = Globals.Player4MaxHP - Globals.Player4HP - Globals.Player4Attack;
+            BaseDMG = Globals.Player4MaxHP - Globals.Player4HP;
             if (BaseDMG <= 0) { BaseDMG = 1; }
 
             Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
@@ -7924,6 +8508,12 @@ namespace ffgameRedux
             this.Player2ActList.Enabled = true;
             this.Player3ActList.Enabled = true;
             this.Player4ActList.Enabled = true;
+
+            this.Player1.Visible = true;
+            this.Player2.Visible = true;
+            this.Player3.Visible = true;
+            this.Player4.Visible = true;
+
             ResetPlayer1Position();
             ResetPlayer2Position();
             ResetPlayer3Position();
@@ -7939,7 +8529,7 @@ namespace ffgameRedux
 
             if (Globals.Player1IsDead == true)
             {
-
+                this.Player1.Visible = true;
                 this.Gameweapon.Size = new Size(32, 32);
                 this.Gameweapon.Location = new Point(this.Player1.Location.X + this.Player1.Width / 2, this.Player1.Location.Y - 80);
                 this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.fe1;
@@ -7973,7 +8563,7 @@ namespace ffgameRedux
             }
             if (Globals.Player2IsDead == true)
             {
-
+                this.Player2.Visible = true;
                 this.Gameweapon.Size = new Size(32, 32);
                 this.Gameweapon.Location = new Point(this.Player2.Location.X + this.Player2.Width / 2, this.Player2.Location.Y - 80);
                 this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.fe1;
@@ -8007,6 +8597,7 @@ namespace ffgameRedux
             }
             if (Globals.Player3IsDead == true)
             {
+                this.Player3.Visible = true;
 
                 this.Gameweapon.Size = new Size(32, 32);
                 this.Gameweapon.Location = new Point(this.Player3.Location.X + this.Player3.Width / 2, this.Player3.Location.Y - 80);
@@ -8041,7 +8632,7 @@ namespace ffgameRedux
             }
             if (Globals.Player4IsDead == true)
             {
-
+                this.Player4.Visible = true;
                 this.Gameweapon.Size = new Size(32, 32);
                 this.Gameweapon.Location = new Point(this.Player4.Location.X + this.Player4.Width / 2, this.Player4.Location.Y - 80);
                 this.Gameweapon.Image = global::ffgameRedux.Properties.Resources.fe1;
@@ -8127,7 +8718,20 @@ namespace ffgameRedux
                 this.Player3ActList.Enabled = true;
 
             }
+            if (Globals.Player4IsDead == false)
+            {
 
+                this.Gameweapon.Location = new Point(this.Player4.Location.X, this.Player4.Location.Y - 20);
+                this.Gameweapon.Visible = true;
+                Thread.Sleep(200);
+                this.Refresh();
+
+                Globals.Player4HP = Globals.Player4HP + Globals.Player4MaxHP / 4;
+                if (Globals.Player4HP > Globals.Player4MaxHP) { Globals.Player4HP = Globals.Player4MaxHP; }
+                this.Player4HPGauge.Text = (Globals.Player4Name + " HP: " + Convert.ToString(Globals.Player4HP) + "/ " + Convert.ToString(Globals.Player4MaxHP));
+                this.Player4ActList.Enabled = true;
+
+            }
 
 
 
@@ -11040,6 +11644,373 @@ namespace ffgameRedux
             this.HPBackground.Controls.Add(Player4MPGauge);
 
 
+        }
+
+
+        private void P1Tools()
+        {
+            //also crit
+            Random rand = new Random();
+            int CritVal = rand.Next(0, Globals.CritArray.Length);
+            int SawRank = rand.Next(0, Globals.BossTech.Length);
+
+            // get into position
+            this.Player1.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Height /2);
+
+            //beyblade 
+            int beyblade = 0;
+            Gameweapon.Visible = true;
+            int beytimer = 30;
+            while ( beyblade < 5)
+            {
+
+
+                //down
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player1.Location.X + Player1.Width / 2, Player1.Location.Y + this.Player1.Height);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_d; 
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //righ
+                
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player1.Location.X + Player1.Width, Player1.Location.Y + this.Player1.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_r;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //up
+                this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player1.Location.X - Player1.Width / 2, Player1.Location.Y - 64);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_u;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //eft
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player1.Location.X - 64, Player1.Location.Y + this.Player1.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_l;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                beyblade++;
+            }
+
+            // DMG Step
+
+            int BaseDMG = 0;
+            if (SawRank == 0 || SawRank == 1 || SawRank == 2)
+            {
+                BaseDMG = Globals.Player1Attack * 2;
+            }
+            if (SawRank == 4 || SawRank == 5 )
+            {
+                BaseDMG = Globals.Player1Attack / 2;
+            }
+            BaseDMG = BaseDMG + Globals.Floor;
+            if (Globals.Player1Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+            Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+            this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+            this.DMGLabel.Text = Convert.ToString(BaseDMG);
+            this.DMGLabel.Visible = true;
+            this.Refresh();
+            Thread.Sleep(600);
+            this.DMGLabel.Visible = false;
+            this.Text = Convert.ToString(Globals.EnemyHP);
+            if (Globals.EnemyHP <= 0)
+            {
+                this.Enemy1.Visible = false;
+                Globals.EnemyHP = 0;
+                this.Refresh();
+                // Load next floor
+
+            }
+
+
+            if (Globals.Player1Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+
+            Gameweapon.Visible = false;
+            ResetPlayer1Position();
+            this.Refresh();
+            Thread.Sleep(540);
+        }
+
+        private void P2Tools()
+        {
+            //also crit
+            Random rand = new Random();
+            int CritVal = rand.Next(0, Globals.CritArray.Length);
+            int SawRank = rand.Next(0, Globals.BossTech.Length);
+
+            // get into position
+            this.Player2.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Height / 2);
+
+            //beyblade 
+            int beyblade = 0;
+            Gameweapon.Visible = true;
+            int beytimer = 30;
+            while (beyblade < 5)
+            {
+
+
+                //down
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player2.Location.X + Player2.Width / 2, Player2.Location.Y + this.Player2.Height);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_d;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //righ
+
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player2.Location.X + Player2.Width, Player2.Location.Y + this.Player2.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_r;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //up
+                this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player2.Location.X - Player2.Width / 2, Player2.Location.Y - 64);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_u;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //eft
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player2.Location.X - 64, Player2.Location.Y + this.Player2.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_l;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                beyblade++;
+            }
+
+            // DMG Step
+
+            int BaseDMG = 0;
+            if (SawRank == 0 || SawRank == 1 || SawRank == 2)
+            {
+                BaseDMG = Globals.Player2Attack * 2;
+            }
+            if (SawRank == 4 || SawRank == 5)
+            {
+                BaseDMG = Globals.Player2Attack / 2;
+            }
+            BaseDMG = BaseDMG + Globals.Floor;
+            if (Globals.Player2Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+            Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+            this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+            this.DMGLabel.Text = Convert.ToString(BaseDMG);
+            this.DMGLabel.Visible = true;
+            this.Refresh();
+            Thread.Sleep(600);
+            this.DMGLabel.Visible = false;
+            this.Text = Convert.ToString(Globals.EnemyHP);
+            if (Globals.EnemyHP <= 0)
+            {
+                this.Enemy1.Visible = false;
+                Globals.EnemyHP = 0;
+                this.Refresh();
+                // Load next floor
+
+            }
+
+
+            if (Globals.Player2Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+
+            Gameweapon.Visible = false;
+            ResetPlayer2Position();
+            this.Refresh();
+            Thread.Sleep(540);
+        }
+        private void P3Tools()
+        {
+            //also crit
+            Random rand = new Random();
+            int CritVal = rand.Next(0, Globals.CritArray.Length);
+            int SawRank = rand.Next(0, Globals.BossTech.Length);
+
+            // get into position
+            this.Player3.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Height / 2);
+
+            //beyblade 
+            int beyblade = 0;
+            Gameweapon.Visible = true;
+            int beytimer = 30;
+            while (beyblade < 5)
+            {
+
+
+                //down
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player3.Location.X + Player3.Width / 2, Player3.Location.Y + this.Player3.Height);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_d;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //righ
+
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player3.Location.X + Player3.Width, Player3.Location.Y + this.Player3.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_r;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //up
+                this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player3.Location.X - Player3.Width / 2, Player3.Location.Y - 64);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_u;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //eft
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player3.Location.X - 64, Player3.Location.Y + this.Player3.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_l;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                beyblade++;
+            }
+
+            // DMG Step
+
+            int BaseDMG = 0;
+            if (SawRank == 0 || SawRank == 1 || SawRank == 2)
+            {
+                BaseDMG = Globals.Player3Attack * 2;
+            }
+            if (SawRank == 4 || SawRank == 5)
+            {
+                BaseDMG = Globals.Player3Attack / 2;
+            }
+            BaseDMG = BaseDMG + Globals.Floor;
+            if (Globals.Player3Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+            Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+            this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+            this.DMGLabel.Text = Convert.ToString(BaseDMG);
+            this.DMGLabel.Visible = true;
+            this.Refresh();
+            Thread.Sleep(600);
+            this.DMGLabel.Visible = false;
+            this.Text = Convert.ToString(Globals.EnemyHP);
+            if (Globals.EnemyHP <= 0)
+            {
+                this.Enemy1.Visible = false;
+                Globals.EnemyHP = 0;
+                this.Refresh();
+                // Load next floor
+
+            }
+
+
+            if (Globals.Player3Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+
+            Gameweapon.Visible = false;
+            ResetPlayer3Position();
+            this.Refresh();
+            Thread.Sleep(540);
+        }
+        private void P4Tools()
+        {
+            //also crit
+            Random rand = new Random();
+            int CritVal = rand.Next(0, Globals.CritArray.Length);
+            int SawRank = rand.Next(0, Globals.BossTech.Length);
+
+            // get into position
+            this.Player4.Location = new Point(this.Enemy1.Location.X + this.Enemy1.Width + 32, this.Enemy1.Location.Y + this.Enemy1.Height / 2);
+
+            //beyblade 
+            int beyblade = 0;
+            Gameweapon.Visible = true;
+            int beytimer = 30;
+            while (beyblade < 5)
+            {
+
+
+                //down
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_r2;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player4.Location.X + Player4.Width / 2, Player4.Location.Y + this.Player4.Height);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_d;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //righ
+
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player4.Location.X + Player4.Width, Player4.Location.Y + this.Player4.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_r;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //up
+                this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_r;
+                Gameweapon.Size = new Size(32, 64);
+                Gameweapon.Location = new Point(Player4.Location.X - Player4.Width / 2, Player4.Location.Y - 64);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_u;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                //eft
+                Gameweapon.Size = new Size(64, 32);
+                Gameweapon.Location = new Point(Player4.Location.X - 64, Player4.Location.Y + this.Player4.Height - 20);
+                Gameweapon.Image = global::ffgameRedux.Properties.Resources.Saw_l;
+                this.Refresh();
+                Thread.Sleep(beytimer);
+
+                beyblade++;
+            }
+
+            // DMG Step
+
+            int BaseDMG = 0;
+            if (SawRank == 0 || SawRank == 1 || SawRank == 2)
+            {
+                BaseDMG = Globals.Player2Attack * 2;
+            }
+            if (SawRank == 4 || SawRank == 5)
+            {
+                BaseDMG = Globals.Player4Attack / 2;
+            }
+            BaseDMG = BaseDMG + Globals.Floor;
+            if (Globals.Player4Speed > CritVal) { BaseDMG = BaseDMG * 2; }
+
+            Globals.EnemyHP = Globals.EnemyHP - BaseDMG;
+            this.DMGLabel.Location = new Point(Enemy1.Location.X + Enemy1.Size.Width - 30, Enemy1.Location.Y - 30);
+            this.DMGLabel.Text = Convert.ToString(BaseDMG);
+            this.DMGLabel.Visible = true;
+            this.Refresh();
+            Thread.Sleep(600);
+            this.DMGLabel.Visible = false;
+            this.Text = Convert.ToString(Globals.EnemyHP);
+            if (Globals.EnemyHP <= 0)
+            {
+                this.Enemy1.Visible = false;
+                Globals.EnemyHP = 0;
+                this.Refresh();
+                // Load next floor
+
+            }
+
+
+            if (Globals.Player4Speed > CritVal) { BaseDMG = BaseDMG / 2; }
+
+            Gameweapon.Visible = false;
+            ResetPlayer4Position();
+            this.Refresh();
+            Thread.Sleep(540);
         }
 
 
