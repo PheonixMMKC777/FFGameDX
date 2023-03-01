@@ -113,6 +113,16 @@ namespace ffgameRedux.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bg5 {
+            get {
+                object obj = ResourceManager.GetObject("bg5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bgact {
             get {
                 object obj = ResourceManager.GetObject("bgact", resourceCulture);
@@ -486,6 +496,16 @@ namespace ffgameRedux.Properties {
         internal static System.Drawing.Bitmap ice3 {
             get {
                 object obj = ResourceManager.GetObject("ice3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Joe_Biden {
+            get {
+                object obj = ResourceManager.GetObject("Joe_Biden", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

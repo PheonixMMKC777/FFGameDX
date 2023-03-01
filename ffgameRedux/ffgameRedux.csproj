@@ -41,7 +41,9 @@
     <None Include="bin\Debug\net6.0-windows\data\bg3.png" />
     <None Include="bin\Debug\net6.0-windows\data\bg4.png" />
     <None Include="bin\Debug\net6.0-windows\data\bgFinal.gif" />
+    <None Include="bin\Debug\net6.0-windows\data\bg5.png" />
     <Content Include="bin\Debug\net6.0-windows\data\bicon.ico" />
+    <None Include="bin\Debug\net6.0-windows\data\Joe-Biden.png" />
     <None Include="bin\Debug\net6.0-windows\data\edgar_r2.png" />
     <None Include="bin\Debug\net6.0-windows\data\edgar_d.png" />
     <None Include="bin\Debug\net6.0-windows\data\Saw_d.png" />

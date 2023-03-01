@@ -172,7 +172,12 @@ namespace ffgameRedux
         public static ListBox P3CharList = new ListBox();
         public static ListBox P4CharList = new ListBox();
 
+        //joe biden secret input button
 
+        public static bool SummonTheJoe = false;
+
+        public static System.Windows.Forms.Timer DanceAnim = new System.Windows.Forms.Timer();
+        public static bool DanceState = false;
     }
 
     partial class MainForm
@@ -1288,6 +1293,18 @@ namespace ffgameRedux
                 LoadNextFloor();
             }
 
+            if (e.KeyCode == Keys.PageUp)
+            {
+                Globals.Floor = 49;
+                LoadNextFloor();
+            }
+
+            if (e.KeyCode == Keys.PageDown)
+            {
+                EndingSequence();
+
+
+            }
         }
 
         private void this_MouseDown(object sender, MouseEventArgs e)
@@ -1911,6 +1928,12 @@ namespace ffgameRedux
                 Globals.SongID = "data/sa3.wav";
 
             }
+
+            if (Globals.Floor == 50) 
+            {
+                Globals.SongID = "data/ffbe_sky.mp3";
+
+            }/// JOE BIDEN
 
             Globals.MusicPlayer.URL = Globals.SongID;
             Globals.MusicPlayer.controls.play();
@@ -5912,6 +5935,31 @@ namespace ffgameRedux
             }
 
 
+            // SECRERT JOE BIDEN BOSS FIGHT
+
+            if (Globals.Floor == 50)
+            {
+                this.Background.Image = global::ffgameRedux.Properties.Resources.bg5;
+
+                MusicShift();
+                //workaround for skills
+                Globals.BossFight = true;
+                Globals.BossName = "Sleepy Joe";
+                TentFormula();
+                this.PartyRank.Text = ("Party Rank: SSS");
+                // load new enemy
+
+                Globals.EnemyAttack = 570;
+                Globals.EnemyHP = 800000;
+
+                this.Enemy1.Image = global::ffgameRedux.Properties.Resources.Joe_Biden;
+                this.Enemy1.Size = new Size(global::ffgameRedux.Properties.Resources.Joe_Biden.Width, global::ffgameRedux.Properties.Resources.Joe_Biden.Height);
+                this.Enemy1.Visible = true;
+
+
+                this.Enemy1.Location = new Point(80, 115); //comment me out later
+
+            }
 
         } //load next floor
 
@@ -12013,6 +12061,325 @@ namespace ffgameRedux
             Thread.Sleep(540);
         }
 
+
+        private void EndingSequence()
+        {
+
+            //reset player icons
+            ResetPlayer1Position();
+            ResetPlayer2Position();
+            ResetPlayer3Position();
+            ResetPlayer4Position();
+
+            this.Enemy1.Visible = false;
+            Globals.MusicPlayer.controls.stop();
+            Globals.MusicPlayer.URL = "data/smwc.mp3";
+            Globals.MusicPlayer.controls.play();
+
+            this.Player1.Location = new Point(250, 220);
+            this.Player2.Location = new Point(350, 220);
+            this.Player3.Location = new Point(450, 220);
+            this.Player4.Location = new Point(550, 220);
+
+            this.Player1ActList.Enabled = false;
+            this.Player2ActList.Enabled = false;
+            this.Player3ActList.Enabled = false;
+            this.Player4ActList.Enabled = false;
+
+            this.MenuButton.Enabled = false;
+            this.EngageButton.Enabled = false;
+            this.PlayerBackpack.Enabled = false;
+
+            Globals.DanceAnim.Interval = 1000;
+            Globals.DanceAnim.Tick += AnimateCharacters;
+            Globals.DanceAnim.Start();
+
+            // party is now doing the dance
+
+
+        }
+
+
+        void AnimateCharacters(object sender, EventArgs e)
+        {
+
+            #region DanceAnimStolen
+
+            int DanceCooldown = 300;
+            if (Globals.Player1IsDead == false)
+            {
+
+                if (Globals.Player1Name == "Luneth")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.onion_w;
+                }
+
+                if (Globals.Player1Name == "Warrior")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.war_w;
+                }
+
+                if (Globals.Player1Name == "Thief")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.thief_w;
+                }
+
+                if (Globals.Player1Name == "Cid")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.cid_w;
+                }
+                if (Globals.Player1Name == "Rydia")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_w;
+                }
+                if (Globals.Player1Name == "Edgar")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
+            }
+            if (Globals.Player2IsDead == false)
+            {
+
+                if (Globals.Player2Name == "Luneth")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.onion_w;
+                }
+
+                if (Globals.Player2Name == "Warrior")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.war_w;
+                }
+
+                if (Globals.Player2Name == "Thief")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.thief_w;
+                }
+
+                if (Globals.Player2Name == "Cid")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.cid_w;
+                }
+                if (Globals.Player2Name == "Rydia")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_w;
+                }
+                if (Globals.Player2Name == "Edgar")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
+            }
+            if (Globals.Player3IsDead == false)
+            {
+
+                if (Globals.Player3Name == "Luneth")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.onion_w;
+                }
+
+                if (Globals.Player3Name == "Warrior")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.war_w;
+                }
+
+                if (Globals.Player3Name == "Thief")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.thief_w;
+                }
+
+                if (Globals.Player3Name == "Cid")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.cid_w;
+                }
+                if (Globals.Player3Name == "Rydia")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_w;
+                }
+                if (Globals.Player3Name == "Edgar")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
+            }
+            if (Globals.Player4IsDead == false)
+            {
+
+                if (Globals.Player4Name == "Luneth")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.onion_w;
+                }
+
+                if (Globals.Player4Name == "Warrior")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.war_w;
+                }
+
+                if (Globals.Player4Name == "Thief")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.thief_w;
+                }
+
+                if (Globals.Player4Name == "Cid")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.cid_w;
+                }
+                if (Globals.Player4Name == "Rydia")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_w;
+                }
+                if (Globals.Player4Name == "Edgar")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_w;
+                }
+            }
+            this.Refresh();
+            Thread.Sleep(DanceCooldown);
+
+            this.Refresh();
+            Thread.Sleep(DanceCooldown);
+            if (Globals.Player1IsDead == false)
+            {
+
+                if (Globals.Player1Name == "Luneth")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.onion_s;
+                }
+
+                if (Globals.Player1Name == "Warrior")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.war_s;
+                }
+
+                if (Globals.Player1Name == "Thief")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.thief_s;
+                }
+
+                if (Globals.Player1Name == "Cid")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.cid_s;
+                }
+                if (Globals.Player1Name == "Rydia")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+                }
+                if (Globals.Player1Name == "Edgar")
+                {
+                    this.Player1.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                }
+            }
+            if (Globals.Player2IsDead == false)
+            {
+
+                if (Globals.Player2Name == "Luneth")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.onion_s;
+                }
+
+                if (Globals.Player2Name == "Warrior")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.war_s;
+                }
+
+                if (Globals.Player2Name == "Thief")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.thief_s;
+                }
+
+                if (Globals.Player2Name == "Cid")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.cid_s;
+                }
+                if (Globals.Player2Name == "Rydia")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+                }
+                if (Globals.Player2Name == "Edgar")
+                {
+                    this.Player2.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                }
+            }
+            if (Globals.Player3IsDead == false)
+            {
+
+                if (Globals.Player3Name == "Luneth")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.onion_s;
+                }
+
+                if (Globals.Player3Name == "Warrior")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.war_s;
+                }
+
+                if (Globals.Player3Name == "Thief")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.thief_s;
+                }
+
+                if (Globals.Player3Name == "Cid")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.cid_s;
+                }
+                if (Globals.Player3Name == "Rydia")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+                }
+                if (Globals.Player3Name == "Edgar")
+                {
+                    this.Player3.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                }
+            }
+            if (Globals.Player4IsDead == false)
+            {
+
+                if (Globals.Player4Name == "Luneth")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.onion_s;
+                }
+
+                if (Globals.Player4Name == "Warrior")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.war_s;
+                }
+
+                if (Globals.Player4Name == "Thief")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.thief_s;
+                }
+
+                if (Globals.Player4Name == "Cid")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.cid_s;
+                }
+                if (Globals.Player4Name == "Rydia")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.rydia_s;
+                }
+                if (Globals.Player4Name == "Edgar")
+                {
+                    this.Player4.Image = global::ffgameRedux.Properties.Resources.edgar_s;
+                }
+            }
+            this.Refresh();
+            Thread.Sleep(DanceCooldown);
+            #endregion DanceAnimStolen
+
+            //party doin the thing
+
+            
+            this.Player1HPGauge.Text = "Reload the game and go to the menu,";
+            this.Player2HPGauge.Text = "and push PageUp and then the ESC key";
+            this.Player3HPGauge.Text = "to trigger a secret Boss Fight!";
+            this.Player4HPGauge.Text = "Programmed by Scatfone.";
+
+            this.PartyRank.Text = "Party Rank: SS";
+            this.PartyScore.Text = "Party Score: MAX";
+            
+            this.Player1MPGauge.Text = "";
+            this.Player2MPGauge.Text = "";
+            this.Player3MPGauge.Text = "";
+            this.Player4MPGauge.Text = "YOU WIN!";
+
+        }
 
         private PictureBox Player1;
         private Label Player1HPGauge;
